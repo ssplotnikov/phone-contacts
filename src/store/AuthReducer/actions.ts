@@ -1,27 +1,29 @@
-import {
-  FETCH_AUTH_FAILED,
-  LOGIN,
-  LOGOUT,
-  TOOGLE_IS_FETCHING,
-} from './constants';
-import { AuthAction } from './types';
+import { Action, ActionCreator } from 'redux';
+import { AuthActionTypes } from './constants';
+import { AuthActions } from './types';
 
-const FetchAuth = (action: AuthAction) => ({
-  type: TOOGLE_IS_FETCHING,
-  payload: action.payload.isLoading,
+const FetchAuth: ActionCreator<Action> = (isLoading: AuthActions) => ({
+  type: AuthActionTypes.TOOGLE_IS_FETCHING,
+  payload: { isLoading },
 });
 
-const LoginAction = (action: AuthAction) => ({
-  type: LOGIN,
+const LoginAction: ActionCreator<Action> = (
+  email: AuthActions,
+  pwd: AuthActions,
+) => ({
+  type: AuthActionTypes.LOGIN,
+  payload: { email, pwd },
+});
+
+const LogoutAction: ActionCreator<Action> = () => ({
+  type: AuthActionTypes.LOGOUT,
+});
+
+const FetchAuthError: ActionCreator<Action> = (action: {
+  payload: string;
+}): AuthActions => ({
+  type: AuthActionTypes.FETCH_AUTH_FAILED,
   payload: action.payload,
 });
 
-const LogoutAction = () => ({
-  type: LOGOUT,
-});
-const FetchAuthError = (action: AuthAction) => ({
-  type: FETCH_AUTH_FAILED,
-  payload: action.payload,
-});
-
-export { LoginAction, LogoutAction, FetchAuth };
+export { LoginAction, LogoutAction, FetchAuth, FetchAuthError };

@@ -1,5 +1,11 @@
 import React from 'react';
+import Registration from '../../components/auth/Registration';
 
 export const Auth: React.FC = () => {
-  return <div>Auth</div>;
+  return (
+    <>
+      <Registration />
+      {/* <Login /> */}
+    </>
+  );
 };

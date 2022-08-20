@@ -1,0 +1,29 @@
+{
+  "contacts": [
+    {
+      "_id": "1",
+      "name": "John",
+      "surname": "Smith",
+      "age": 13,
+      "avatarUrl": ""
+    },
+    {
+      "_id": "2",
+      "name": "Tom",
+      "surname": "Soer",
+      "age": 30,
+      "avatarUrl": ""
+    },
+    {
+      "_id": "3",
+      "name": "William",
+      "surname": "Smith",
+      "age": 20,
+      "avatarUrl": ""
+    }
+  ],
+  "register": {
+    "email": "qwe@r.ru",
+    "pwd": "qwe"
+  }
+}

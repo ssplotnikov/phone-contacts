@@ -1,10 +1,5 @@
-import {
-  FETCH_AUTH_FAILED,
-  LOGIN,
-  LOGOUT,
-  TOOGLE_IS_FETCHING,
-} from './constants';
-import { AuthAction, initialAuthType } from './types';
+import { AuthActionTypes } from './constants';
+import { AuthActions, initialAuthType } from './types';
 
 const initial: initialAuthType = {
   profile: null,
@@ -13,20 +8,23 @@ const initial: initialAuthType = {
   error: null,
 };
 
-const authReducer = (state: initialAuthType = initial, action: AuthAction) => {
+const authReducer = (
+  state: initialAuthType = initial,
+  action: AuthActions,
+): initialAuthType => {
   switch (action.type) {
-    case TOOGLE_IS_FETCHING:
-      return { ...state, isLoading: action.payload.isLoading };
-    case LOGIN:
+    case AuthActionTypes.TOOGLE_IS_FETCHING:
+      return { ...state, ...action.payload };
+    case AuthActionTypes.LOGIN:
       return {
         ...state,
-        profile: action.payload.profile,
+        profile: action.payload,
         isAuth: true,
       };
-    case LOGOUT:
+    case AuthActionTypes.LOGOUT:
       return { ...state, ...initial };
-    case FETCH_AUTH_FAILED:
-      return { ...state, error: action.payload.error };
+    case AuthActionTypes.FETCH_AUTH_FAILED:
+      return { ...state, error: action.payload };
     default:
       return state;
   }
