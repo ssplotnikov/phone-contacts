@@ -18,7 +18,7 @@ export const Registration: React.FC<PropsType> = (props) => {
     e.preventDefault();
     if (pwd === matchPwd) {
       props.RegistrationThunk(email, pwd);
-      setAuth(email, pwd);
+      setAuth({ email, pwd, isAuth: true });
     }
   };
 

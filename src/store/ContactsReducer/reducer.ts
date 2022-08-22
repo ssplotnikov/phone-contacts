@@ -1,11 +1,5 @@
-import {
-  DELETE_DATA,
-  EDIT_DATA,
-  FETCH_DATA,
-  FETCH_DATA_ERROR,
-  FETCH_DATA_SUCCESS,
-} from './constants';
-import { ActionMainType, initialMainType } from './types';
+import { ContactsActionTypes } from './constants';
+import { ContactsActions, initialMainType } from './types';
 
 const initial: initialMainType = {
   profiles: [],
@@ -15,30 +9,28 @@ const initial: initialMainType = {
 
 const contactsReducer = (
   state: initialMainType = initial,
-  action: ActionMainType,
-) => {
+  action: ContactsActions,
+): initialMainType => {
   switch (action.type) {
-    case FETCH_DATA:
-      return { ...state, isLoading: action.payload };
-    case FETCH_DATA_SUCCESS:
-      return { ...state, profiles: [action.payload?.profiles] };
-    case FETCH_DATA_ERROR:
-      return { ...state, error: action.payload?.error };
-    case EDIT_DATA:
+    case ContactsActionTypes.FETCH_DATA:
+      return { ...state, ...action.payload };
+    case ContactsActionTypes.FETCH_DATA_SUCCESS:
+      return { ...state, profiles: [...action.payload] };
+    case ContactsActionTypes.FETCH_DATA_ERROR:
+      return { ...state, error: action.payload.error };
+    case ContactsActionTypes.EDIT_DATA:
       return {
         ...state,
-        profiles: state.profiles?.map((user) => {
-          if (user._id === action.payload?.profiles?._id) {
-            return { ...user, ...action.payload.profiles };
+        ...state.profiles?.map((user) => {
+          if (user._id === action.payload?._id) {
+            return { ...user, ...action.payload };
           }
         }),
       };
-    case DELETE_DATA:
+    case ContactsActionTypes.DELETE_DATA:
       return {
         ...state,
-        profiles: state.profiles?.filter(
-          (user) => user._id !== action.payload?.profiles?._id,
-        ),
+        ...state.profiles?.filter((user) => user._id !== action.payload),
       };
     default:
       return state;

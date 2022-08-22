@@ -6,9 +6,7 @@ type Auth = {
 type Contacts = {
   _id: number;
   name?: string;
-  surname?: string;
-  age?: number;
-  avatarUrl?: string;
+  email?: string;
 };
 
 type CreateUserResponse = {

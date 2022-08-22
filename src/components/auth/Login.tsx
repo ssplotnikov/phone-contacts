@@ -78,3 +78,8 @@ export const Login: React.FC = () => {
     </div>
   );
 };
+// const mapDispatch = {
+//   RegistrationThunk,
+// };
+
+// export default connect<any>(null, mapDispatch)(Registration);

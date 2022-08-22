@@ -2,28 +2,25 @@
   "contacts": [
     {
       "_id": "1",
-      "name": "John",
-      "surname": "Smith",
+      "name": "John Smith",
       "age": 13,
-      "avatarUrl": ""
+      "email": "smith@example.com"
     },
     {
       "_id": "2",
-      "name": "Tom",
-      "surname": "Soer",
+      "name": "Tom Smith",
       "age": 30,
-      "avatarUrl": ""
+      "email": "smith@example.com"
     },
     {
       "_id": "3",
-      "name": "William",
-      "surname": "Smith",
+      "name": "William Smith",
       "age": 20,
-      "avatarUrl": ""
+      "email": "smith@example.com"
     }
   ],
   "register": {
-    "email": "qwe@r.ru",
+    "email": "q@r.r",
     "pwd": "qwe"
   }
 }

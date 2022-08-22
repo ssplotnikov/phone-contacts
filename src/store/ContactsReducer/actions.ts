@@ -1,33 +1,29 @@
-import {
-  DELETE_DATA,
-  EDIT_DATA,
-  FETCH_DATA,
-  FETCH_DATA_ERROR,
-  FETCH_DATA_SUCCESS,
-} from './constants';
-import { ActionMainType } from './types';
+import { Action, ActionCreator } from 'redux';
+import { ContactsActionTypes } from './constants';
+import { ContactsActions } from './types';
 
-const FetchData = () => ({
-  type: FETCH_DATA,
+const FetchData: ActionCreator<Action> = (isLoading) => ({
+  type: ContactsActionTypes.FETCH_DATA,
+  payload: { isLoading },
 });
 
-const FetchSuccess = (action: ActionMainType) => ({
-  type: FETCH_DATA_SUCCESS,
-  payload: action.payload?.profiles,
+const FetchSuccess: ActionCreator<Action> = (payload: ContactsActions) => ({
+  type: ContactsActionTypes.FETCH_DATA_SUCCESS,
+  payload,
 });
-const FetchError = (action: ActionMainType) => ({
-  type: FETCH_DATA_ERROR,
-  payload: action.payload?.error,
-});
-
-const EditProfile = (action: ActionMainType) => ({
-  type: EDIT_DATA,
-  payload: action.payload?.profiles,
+const FetchError: ActionCreator<Action> = (action: ContactsActions) => ({
+  type: ContactsActionTypes.FETCH_DATA_ERROR,
+  payload: action.payload,
 });
 
-const DeleteProfile = (action: ActionMainType) => ({
-  type: DELETE_DATA,
-  payload: action.payload?.profiles?._id,
+const EditProfile: ActionCreator<Action> = (action: ContactsActions) => ({
+  type: ContactsActionTypes.EDIT_DATA,
+  payload: action.payload,
+});
+
+const DeleteProfile: ActionCreator<Action> = (action: ContactsActions) => ({
+  type: ContactsActionTypes.DELETE_DATA,
+  payload: action.payload,
 });
 
 export { FetchData, FetchSuccess, FetchError, EditProfile, DeleteProfile };

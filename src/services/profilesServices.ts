@@ -15,7 +15,7 @@ export const contactsAPI = {
   async getUsers(page: number = 1, limit: number = 10) {
     try {
       const { data } = await instance.get<GetContactsResponse>(
-        `contacts?page=${page}&limit=${limit}`,
+        `contacts?_page=${page}&_limit=${limit}`,
       );
       return data;
     } catch (error) {
@@ -28,9 +28,7 @@ export const contactsAPI = {
         `contacts/${contact._id}`,
         {
           name: contact.name,
-          surname: contact.surname,
-          age: contact.age,
-          avatarUrt: contact.avatarUrl,
+          email: contact.email,
         },
       );
       return data;
