@@ -3,7 +3,7 @@ import { AuthActions, initialAuthType } from './types';
 
 const initial: initialAuthType = {
   profile: null,
-  isAuth: true,
+  isAuth: false,
   isLoading: false,
   error: null,
 };

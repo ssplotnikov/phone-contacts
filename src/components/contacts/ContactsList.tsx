@@ -1,37 +1,21 @@
-import { useEffect } from 'react';
-import { connect } from 'react-redux';
-
-import { AllContactsThunk } from '../../store/ContactsReducer/thunks';
+import React from 'react';
 import { IContact } from '../../store/ContactsReducer/types';
+import { Search } from '../../ui/Search/Search';
 import { Contact } from './Contact';
 
-type PropsType = {
-  contacts: IContact[];
-  AllContactsThunk: typeof AllContactsThunk;
-};
-
-const ContactsList: React.FC<PropsType> = (props) => {
-  useEffect(() => {
-    props.AllContactsThunk();
-  }, []);
-
+export const ContactsList: React.FC<IProps> = (props) => {
   return (
-    <ul className='max-w-md divide-y divide-gray-200 dark:divide-gray-700'>
-      {props.contacts.map((contact: IContact) => (
-        <Contact contact={contact} key={contact._id} />
-      ))}
-    </ul>
+    <div className='flex flex-col'>
+      <Search />
+      <ul className='max-w-md divide-y divide-gray-200 dark:divide-gray-700'>
+        {props.contacts.map((contact: IContact) => (
+          <Contact contact={contact} key={contact._id} />
+        ))}
+      </ul>
+    </div>
   );
 };
 
-const mapStateToProps = function (state: any) {
-  return {
-    contacts: state.contacts.profiles,
-  };
-};
-
-const mapDispatchToProps = {
-  AllContactsThunk,
-};
-
-export default connect<any>(mapStateToProps, mapDispatchToProps)(ContactsList);
+interface IProps {
+  contacts: IContact[];
+}

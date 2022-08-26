@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import photo from '../../assets/photo.jpg';
 import useInput from '../../hooks/useInput';
+import { IContact } from '../../store/ContactsReducer/types';
+import { Button, ButtonError } from '../../ui/Button/Button';
 
-export const Contact = ({ contact }: any) => {
+type Props = {
+  contact: IContact;
+};
+
+export const Contact: React.FC<Props> = ({ contact }) => {
   const [name, handlerName] = useInput(contact.name);
   const [email, handlerEmail] = useInput(contact.email);
   const [edit, setEdit] = useState(false);
@@ -13,12 +19,7 @@ export const Contact = ({ contact }: any) => {
     }
   };
   return (
-    <li
-      className='pb-3 sm:pb-4'
-      onDoubleClick={() => setEdit(true)}
-      onKeyDown={_handlerDown}
-      // onBlur={() => setEdit(false)}
-    >
+    <li className='pb-3 sm:pb-4'>
       <div className='flex items-center space-x-4'>
         <div className='flex-shrink-0'>
           <img className='w-8 h-8 rounded-full' src={photo} alt='Neil image' />
@@ -65,6 +66,13 @@ export const Contact = ({ contact }: any) => {
             </div>
           )}
         </div>
+        {edit ? (
+          <Button name='Save' onClick={() => setEdit(false)} />
+        ) : (
+          <Button name='Edit' onClick={() => setEdit(true)} />
+        )}
+
+        <ButtonError name='Delete' onClick={() => console.log('Delete')} />
         <div className='inline-flex items-center text-base font-semibold text-gray-900 dark:text-white'>
           $320
         </div>
