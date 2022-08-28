@@ -16,9 +16,9 @@ const FetchError: ActionCreator<Action> = (action: ContactsActions) => ({
   payload: action.payload,
 });
 
-const EditProfile: ActionCreator<Action> = (action: ContactsActions) => ({
+const EditProfile: ActionCreator<Action> = (contact: ContactsActions) => ({
   type: ContactsActionTypes.EDIT_DATA,
-  payload: action.payload,
+  payload: contact,
 });
 
 const DeleteProfile: ActionCreator<Action> = (id: ContactsActions) => ({

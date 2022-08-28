@@ -21,11 +21,11 @@ const contactsReducer = (
     case ContactsActionTypes.EDIT_DATA:
       return {
         ...state,
-        ...state.contacts?.map((contact) => {
-          if (contact.id === action.payload?.id) {
-            return { ...contact, ...action.payload };
-          }
-        }),
+        contacts: state.contacts?.map((contact) =>
+          contact.id === action.payload?.id
+            ? { ...contact, ...action.payload }
+            : contact,
+        ),
       };
     case ContactsActionTypes.DELETE_DATA:
       return {

@@ -55,7 +55,7 @@ type PayloadType = {
 };
 
 export type initialMainType = {
-  contacts: IContact[] | null;
+  contacts: IContact[];
   isLoading: boolean;
   error: string | null;
 };

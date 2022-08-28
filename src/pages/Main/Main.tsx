@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { ContactsList } from '../../components/contacts/ContactsList';
 import {
@@ -9,10 +9,6 @@ import {
 import { IContact } from '../../store/ContactsReducer/types';
 
 const Main: React.FC<PropsFromRedux> = (props) => {
-  useEffect(() => {
-    props.AllContactsThunk();
-  }, []);
-
   return <ContactsList {...props} />;
 };
 

@@ -2,14 +2,14 @@
   "contacts": [
     {
       "id": "2",
-      "name": "William Smith",
       "age": 20,
+      "name": "настенька Умничка моя",
       "email": "smith@example.com"
     },
     {
       "id": "3",
-      "name": "William Smith",
       "age": 20,
+      "name": "New name",
       "email": "smith@example.com"
     },
     {
@@ -20,14 +20,14 @@
     },
     {
       "id": "5",
-      "name": "William Smith",
       "age": 20,
+      "name": "sdgsdfvssdfqwd",
       "email": "smith@example.com"
     },
     {
       "id": "6",
-      "name": "William Smith",
       "age": 20,
+      "name": "sdgfsd",
       "email": "smith@example.com"
     },
     {

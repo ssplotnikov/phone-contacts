@@ -24,9 +24,14 @@ export const Contact: React.FC<Props> = ({
       setEdit(false);
     }
   };
-  const EditCont = () => {
+  const UpdateCont = () => {
     setEdit(false);
-    UpdateContact(contact);
+    UpdateContact({
+      id: contact.id,
+      name: name,
+      email: email,
+      age: contact.age,
+    });
   };
   const DeleteCont = () => {
     DeleteContact(contact.id);
@@ -81,7 +86,7 @@ export const Contact: React.FC<Props> = ({
           )}
         </div>
         {edit ? (
-          <Button name='Save' onClick={EditCont} />
+          <Button name='Save' onClick={UpdateCont} />
         ) : (
           <Button name='Edit' onClick={() => setEdit(true)} />
         )}
