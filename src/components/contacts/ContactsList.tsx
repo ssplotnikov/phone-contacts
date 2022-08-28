@@ -9,7 +9,12 @@ export const ContactsList: React.FC<IProps> = (props) => {
       <Search />
       <ul className='max-w-md divide-y divide-gray-200 dark:divide-gray-700'>
         {props.contacts.map((contact: IContact) => (
-          <Contact contact={contact} key={contact._id} />
+          <Contact
+            contact={contact}
+            key={contact.id}
+            UpdateContact={props.UpdateContact}
+            DeleteContact={props.DeleteContact}
+          />
         ))}
       </ul>
     </div>
@@ -18,4 +23,6 @@ export const ContactsList: React.FC<IProps> = (props) => {
 
 interface IProps {
   contacts: IContact[];
+  UpdateContact: () => void;
+  DeleteContact: () => void;
 }

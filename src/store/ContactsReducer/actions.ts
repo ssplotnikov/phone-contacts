@@ -21,9 +21,9 @@ const EditProfile: ActionCreator<Action> = (action: ContactsActions) => ({
   payload: action.payload,
 });
 
-const DeleteProfile: ActionCreator<Action> = (action: ContactsActions) => ({
+const DeleteProfile: ActionCreator<Action> = (id: ContactsActions) => ({
   type: ContactsActionTypes.DELETE_DATA,
-  payload: action.payload,
+  payload: id,
 });
 
 export { FetchData, FetchSuccess, FetchError, EditProfile, DeleteProfile };

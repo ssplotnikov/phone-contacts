@@ -6,9 +6,15 @@ import { Button, ButtonError } from '../../ui/Button/Button';
 
 type Props = {
   contact: IContact;
+  UpdateContact: (contact: IContact) => void;
+  DeleteContact: (id: string | number) => void;
 };
 
-export const Contact: React.FC<Props> = ({ contact }) => {
+export const Contact: React.FC<Props> = ({
+  contact,
+  DeleteContact,
+  UpdateContact,
+}) => {
   const [name, handlerName] = useInput(contact.name);
   const [email, handlerEmail] = useInput(contact.email);
   const [edit, setEdit] = useState(false);
@@ -18,6 +24,14 @@ export const Contact: React.FC<Props> = ({ contact }) => {
       setEdit(false);
     }
   };
+  const EditCont = () => {
+    setEdit(false);
+    UpdateContact(contact);
+  };
+  const DeleteCont = () => {
+    DeleteContact(contact.id);
+  };
+
   return (
     <li className='pb-3 sm:pb-4'>
       <div className='flex items-center space-x-4'>
@@ -67,15 +81,12 @@ export const Contact: React.FC<Props> = ({ contact }) => {
           )}
         </div>
         {edit ? (
-          <Button name='Save' onClick={() => setEdit(false)} />
+          <Button name='Save' onClick={EditCont} />
         ) : (
           <Button name='Edit' onClick={() => setEdit(true)} />
         )}
 
-        <ButtonError name='Delete' onClick={() => console.log('Delete')} />
-        <div className='inline-flex items-center text-base font-semibold text-gray-900 dark:text-white'>
-          $320
-        </div>
+        <ButtonError name='Delete' onClick={DeleteCont} />
       </div>
     </li>
   );

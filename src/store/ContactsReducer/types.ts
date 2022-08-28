@@ -31,7 +31,7 @@ export type ContactsActions =
   | ContactErrorType
   | ContactDeleteType;
 export interface IContact {
-  _id: string | number;
+  id: string | number;
   name: string;
   age: number;
   email: string;
@@ -49,13 +49,13 @@ export type ActionMainType = {
 };
 
 type PayloadType = {
-  profiles: IContact | null;
+  contacts: IContact | null;
   isLoading: boolean;
   error: string | null;
 };
 
 export type initialMainType = {
-  profiles: IContact[] | null;
+  contacts: IContact[] | null;
   isLoading: boolean;
   error: string | null;
 };

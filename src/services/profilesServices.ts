@@ -1,9 +1,6 @@
 import axios from 'axios';
-import {
-  Contacts,
-  CreateUserResponse,
-  GetContactsResponse,
-} from './ServicesType';
+import { IContact } from '../store/ContactsReducer/types';
+import { CreateUserResponse, GetContactsResponse } from './ServicesType';
 
 const instance = axios.create({
   baseURL: 'http://localhost:3000/',
@@ -22,25 +19,29 @@ export const contactsAPI = {
       return error;
     }
   },
-  async updateContact(contact: Contacts) {
+  async updateContact(contact: IContact) {
     try {
-      const { data } = await axios.put<GetContactsResponse>(
-        `contacts/${contact._id}`,
-        {
+      const { data } = await instance.put<GetContactsResponse>(
+        `contacts/${contact.id}`,
+        JSON.stringify({
+          id: contact.id,
+          age: contact.age,
           name: contact.name,
           email: contact.email,
-        },
+        }),
       );
       return data;
     } catch (error) {
       return error;
     }
   },
-  async deleteContact(_id: string) {
+  async deleteContact(id: string | number) {
+    console.log(id);
     try {
-      const { data } = await axios.delete(`contacts/${_id}`);
-      return data;
+      await instance.delete(`contacts/${id}`);
     } catch (error) {
+      console.log('error', error);
+
       return error;
     }
   },

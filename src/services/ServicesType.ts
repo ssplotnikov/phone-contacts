@@ -4,7 +4,7 @@ type Auth = {
 };
 
 type Contacts = {
-  _id: number;
+  id: number;
   name?: string;
   email?: string;
 };
